@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import { Spin } from 'antd';
 import { enquireScreen } from 'enquire-js';
-import Header from './Nav0';
-import Footer from './Footer0';
+import Header from './Nav3';
 
-import {
-  Nav00DataSource,
-  Footer01DataSource,
-} from './data.source.js';
+import { Nav30DataSource } from './data.source.js';
 
 let isMobile;
-enquireScreen((b) => {
+enquireScreen(b => {
   isMobile = b;
 });
-
 
 class Layout extends Component {
   constructor(props) {
@@ -25,7 +19,7 @@ class Layout extends Component {
 
   componentDidMount() {
     // 适配手机屏幕;
-    enquireScreen((b) => {
+    enquireScreen(b => {
       this.setState({ isMobile: !!b });
     });
   }
@@ -33,9 +27,8 @@ class Layout extends Component {
   render() {
     return (
       <>
-        <Header dataSource={Nav00DataSource} isMobile={this.state.isMobile} />
+        <Header dataSource={Nav30DataSource} isMobile={this.state.isMobile} />
         {this.props.children}
-        <Footer dataSource={Footer01DataSource} isMobile={this.state.isMobile} />
       </>
     );
   }

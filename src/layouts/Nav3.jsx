@@ -24,22 +24,22 @@ class Header extends React.Component {
     const { dataSource, isMobile, ...props } = this.props;
     const { phoneOpen } = this.state;
     const navData = dataSource.Menu.children;
-    const navChildren = navData.map((item) => {
+    const navChildren = navData.map(item => {
       const { children: a, subItem, ...itemProps } = item;
       if (subItem) {
         return (
           <SubMenu
             key={item.name}
             {...itemProps}
-            title={(
+            title={
               <div
                 {...a}
-                className={`header0-item-block ${a.className}`.trim()}
+                className={`header3-item-block ${a.className}`.trim()}
               >
                 {a.children.map(getChildrenToRender)}
               </div>
-            )}
-            popupClassName="header0-item-child"
+            }
+            popupClassName="header3-item-child"
           >
             {subItem.map(($item, ii) => {
               const { children: childItem } = $item;
@@ -63,7 +63,7 @@ class Header extends React.Component {
       }
       return (
         <Item key={item.name} {...itemProps}>
-          <a {...a} className={`header0-item-block ${a.className}`.trim()}>
+          <a {...a} className={`header3-item-block ${a.className}`.trim()}>
             {a.children.map(getChildrenToRender)}
           </a>
         </Item>
@@ -104,15 +104,16 @@ class Header extends React.Component {
             animation={
               isMobile
                 ? {
-                  height: 0,
-                  duration: 300,
-                  onComplete: (e) => {
-                    if (this.state.phoneOpen) {
-                      e.target.style.height = 'auto';
-                    }
-                  },
-                  ease: 'easeInOutQuad',
-                }
+                    x: 0,
+                    height: 0,
+                    duration: 300,
+                    onComplete: e => {
+                      if (this.state.phoneOpen) {
+                        e.target.style.height = 'auto';
+                      }
+                    },
+                    ease: 'easeInOutQuad',
+                  }
                 : null
             }
             moment={moment}
@@ -121,7 +122,7 @@ class Header extends React.Component {
             <Menu
               mode={isMobile ? 'inline' : 'horizontal'}
               defaultSelectedKeys={['sub0']}
-              theme="dark"
+              theme="light"
             >
               {navChildren}
             </Menu>
